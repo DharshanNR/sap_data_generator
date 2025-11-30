@@ -1,33 +1,61 @@
-# sap_data_generator
+# SAP Data Generator  
+A highly extensible, configurable, and realistic **synthetic SAP/ERP business process data generator** designed for creating end-to-end datasets used in demos, analytics testing, ETL pipelines, and process mining simulations.
 
-**sap_data_generator** is a Python-based framework to programmatically generate realistic SAP (or ERP-like) synthetic data sets representing business processes.  
-It is designed to support simulation of enterprise workflows (orders, invoices, procure-to-pay cycles, etc.) with configurable distributions, noise, and statistical properties — useful for testing, demos, or data-driven analytics platforms.
+This framework allows you to simulate real-world business processes such as **Order-to-Cash (O2C)**, **Procure-to-Pay (P2P)**, and other enterprise workflows using controlled randomness, distributions, and business rules — producing **data that looks indistinguishable from real SAP tables**.
 
-## 🔎 Project Overview
+---
 
-### Why this exists  
-- In enterprise software evaluations, demos, or stress testing — real production data is often unavailable or sensitive.  
-- This tool enables generation of realistic but synthetic data that mimics real-world business processes and metrics.  
-- Enables generating data at scale (transactions, orders, line-items, invoices, etc.), with statistical realism (variations, noise, distributions).
+# 🚀 Overview
 
-### Key Features  
-- Generate synthetic datasets representing business processes (e.g. order-to-cash, procure-to-pay)  
-- Configurable parameters for volume, distributions, noise, date ranges, numeric ranges, etc.  
-- Modular and extensible architecture — easily adapt or extend to new tables / entities / processes  
-- Export data in common formats (CSV, JSON, or format compatible with SAP/ERP ingestion)  
-- Can serve for demo setups, testing flows, data pipelines, or analytics validation  
+Enterprise systems like SAP require large volumes of realistic data for:
 
-## 🚀 Getting Started
+- Demo environments  
+- Validation of ETL/data pipelines  
+- Testing analytics dashboards (PowerBI/Tableau)  
+- Process mining (Celonis, SAP Signavio)  
+- Performance testing  
+- Synthetic dataset creation where sensitive customer data can’t be used  
 
-### Prerequisites  
-- Python 3.8+ (or appropriate version)  
-- Virtual environment recommended  
+However, real ERP datasets are often **sensitive, inconsistent, or unavailable**.  
+This tool fills that gap by generating realistic SAP-like datasets with full parent–child relationships, noise, and configurable business behavior.
 
-### Installation  
+---
 
-```bash
-git clone https://github.com/DharshanNR/sap_data_generator.git
-cd sap_data_generator
-python3 -m venv venv
-source venv/bin/activate        # On Windows: venv\\Scripts\\activate
-pip install -r requirements.txt
+# 🎯 Key Features
+
+### ✔ **Modular architecture**
+Each SAP table or entity is generated using an isolated, reusable module.
+
+### ✔ **Config-driven generation**
+Simply change parameters in a JSON/YAML config to alter:
+- Volume of records  
+- Distributions (normal, pareto, exponential…)  
+- Noise levels  
+- Date windows  
+- Amount ranges  
+- Relationships (1:N, N:N)
+
+### ✔ **Realistic enterprise process simulation**
+Supports linking:
+- Vendors → Purchase Orders → Line Items → Invoices → Payments  
+- Customers → Sales Orders → Deliveries → Billing documents  
+- Material master + pricing + company codes  
+
+### ✔ **Statistical simulation**
+Add realistic variation using:
+- Gaussian noise  
+- Pareto distribution (80/20 spending)  
+- Random rework rates  
+- Delays based on exponential distribution  
+
+### ✔ **Export-friendly**
+Generated data can be exported to:
+- CSV
+- Parquet
+- JSON
+
+### ✔ **Built for extensibility**
+Add new entities, relationships, or business rules with minimal code changes.
+
+---
+
