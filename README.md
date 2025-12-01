@@ -173,7 +173,7 @@ The **Data Quality (DQ) Validation Framework** checks the integrity, structure, 
 
 ### ⚙️ Configure (`dq_config.py`)
 
-Validation is configured in `dq_config.json`. You can set:
+Validation is configured in `dq_config.py`. You can set:
 
 - Table schemas: required columns and types
 - Relationships: key dependencies
