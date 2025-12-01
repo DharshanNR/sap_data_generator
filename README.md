@@ -1,162 +1,124 @@
 # SAP Data Generator – README
 
+---
+
 ## 📌 Overview
 
-The **SAP Data Generator** is a modular Python-based framework that generates realistic synthetic SAP Procure-to-Pay (P2P) datasets. It is designed to simulate real-world business processes such as:
+The **SAP Data Generator** is a modular Python-based framework for generating realistic synthetic SAP Procure-to-Pay (P2P) datasets. It simulates business processes including:
 
-- Vendor master creation  
-- Material master generation  
-- Purchase order creation  
+- Vendor master creation
+- Material master generation
+- Purchase order creation
 - Purchase order line item creation
-- Purchase order Hisory creation
-- Vendor contract 
+- Purchase order history creation
+- Vendor contract creation
 
-The framework is fully configurable—parameters such as vendor count, material count, PO volume, distributions, and process rules can be edited through the Config class, allowing you to customize data generation without modifying the core logic.
+**Configurable:** Parameters (vendor count, material count, PO volume, distributions, process rules) are set via the `Config` class, so you can tailor data generation to your use case.
 
-This tool is useful for:
+**Typical uses:**
 
-- Demo datasets  
-- Analytics use cases  
-- Data engineering practice  
-- Testing ETL pipelines  
-- Process mining 
+- Demo datasets
+- Analytics use cases
+- Data engineering practice
+- Testing ETL pipelines
+- Process mining
 
 ---
 
 ## 🛠 Features
 
-- Configurable data volume (vendors, materials, POs, etc.)  
-- Supports statistical distributions (uniform, pareto, exponential etc.)  
-- Generates linked transactions across tables  
-- Realistic delays between PO → GR → Invoice  
-- Lightweight and modular codebase  
-- Validation scripts included to verify data quality  
+- Flexible data volume (vendors, materials, POs, etc.)
+- Supports statistical distributions (uniform, pareto, exponential, etc.)
+- Generates linked transactions across tables
+- Simulates realistic delays (PO → GR → Invoice)
+- Lightweight, modular codebase
+- Built-in data quality validation scripts
 
 ---
 
 ## 📁 Project Structure
 
-```
+```text
 data_generator/
-│
-
-│
 ├── generated_sap_data/
 │   └── (Generated output files)
-│
 ├── src/
-|    └── data_generator/
+│   └── data_generator/
 │       ├── SAPDataGenerator.py
 │       ├── config.py
 │       ├── utilities.py
-|     └── data_quality/
-│       ├── ValidationResult.py
-│       ├── data_quality.py
-│       ├── dq_config.py
-│       └── utils.py.py
-│
-
-│
+│       └── data_quality/
+│           ├── ValidationResult.py
+│           ├── data_quality.py
+│           ├── dq_config.py
+│           └── utils.py
 └── README.md
 ```
 
 ---
 
-## ⚙️ How to Configure the Data Generation
+## ⚙️ Configuration (via `config.py`)
 
-All parameters are controlled via **config.py**.
+All data generation parameters live in `config.py`. Example:
 
-### Sample Config
-
-```
+```python
 class Config:
     # General
     RANDOM_SEED = 42
     OUTPUT_DIR = "generated_sap_data"
-    OUTPUT_FORMAT = "csv" # or "parquet"
+    OUTPUT_FORMAT = "csv"  # or "parquet"
 
     # Date Range
     START_DATE = datetime.date(2020, 1, 1)
     END_DATE = datetime.date(2024, 12, 31)
 
     # Record Counts
-    NUM_VENDORS = 1000# Slightly more than 1000 to ensure 1000 valid ones
-    NUM_MATERIALS = 5000 # Slightly more than 5000
-    NUM_PO_HEADERS = 10000 # Slightly more than 10000
-    NUM_PO_LINE_ITEMS_TARGET = 40000 # Target for EKPO
-    NUM_PO_HISTORY_TARGET = 30000 # Target for EKBE
-    NUM_CONTRACTS_TARGET = 2000 # Target for VENDOR_CONTRACTS
+    NUM_VENDORS = 1000
+    NUM_MATERIALS = 5000
+    NUM_PO_HEADERS = 10000
+    NUM_PO_LINE_ITEMS_TARGET = 40000
+    NUM_PO_HISTORY_TARGET = 30000
+    NUM_CONTRACTS_TARGET = 2000
 
-    # LFA1 - Vendor Master
-    VENDOR_BLOCKED_PERCENTAGE =0.05 # 5% blocked
-    VENDOR_PREFERRED_PERCENTAGE = 0.10 # 10% preferred
-    VENDOR_PERCENTAGE_FOR_DISTRIBUTION_OF_SALES=.2
-    VENDOR_SALES_CONTRIBUTION_PERCENTAGE=0.80
-    VENDOR_TYPES = ['ZDOM', 'ZINT', 'ZSRV', 'ZCON'] # Domestic, International, Service, Consumable
+    # Vendor Master (LFA1)
+    VENDOR_BLOCKED_PERCENTAGE = 0.05       # 5% blocked
+    VENDOR_PREFERRED_PERCENTAGE = 0.10     # 10% preferred
+    VENDOR_PERCENTAGE_FOR_DISTRIBUTION_OF_SALES = 0.2
+    VENDOR_SALES_CONTRIBUTION_PERCENTAGE = 0.80
+    VENDOR_TYPES = ['ZDOM', 'ZINT', 'ZSRV', 'ZCON']
 
-    # MARA - Material Master
+    # Material Master (MARA)
     MATERIAL_TYPES = ['ROH', 'HALB', 'FERT', 'HAWA']
-    MATERIAL_GROUPS = {
-        'Electronics': {'count': 0.25, 'price_range': (100, 10000),'Description':[
-            'Integrated Circuits (ICs)',
-            'Printed Circuit Boards (PCBs)',
-            'Semiconductors',
-            'Capacitors and Resistors',
-            'Connectors and Cables'
-        ]},
-        'Office Supplies': {'count': 0.25, 'price_range': (1, 500),'Description':[
-            'Pens and Pencils',
-            'Notebooks and Paper',
-            'Staplers and Staples',
-            'Folders and Binders',
-            'Printer Ink and Toner'
-        ]},
-        'Raw Materials': {'count': 0.25, 'price_range': (50, 5000),'Description':[
-            'Steel and Aluminum',
-            'Plastics (e.g., PET, PVC)',
-            'Wood and Lumber',
-            'Copper and Other Metals',
-            'Chemicals and Solvents'
-        ]},
-        'Services': {'count': 0.25, 'price_range': (500, 50000),'Description':[
-            'IT Support and Maintenance',
-            'Consulting and Advisory',
-            'Logistics and Shipping',
-            'Cleaning and Janitorial',
-            'Marketing and Advertising'
-        ]}
-    }
-    UNITS_OF_MEASURE =  ['PC', 'KG', 'M', 'EA', 'L', 'CM', 'BOX']
+    MATERIAL_GROUPS = {...}  # See full source
+    UNITS_OF_MEASURE = ['PC', 'KG', 'M', 'EA', 'L', 'CM', 'BOX']
 
     # Pricing Logic
-    PRICE_VOLATILITY_PERCENTAGE = 0.15 # ±15%
-    CONTRACT_PRICE_DISCOUNT_PERCENTAGE = (0.05, 0.15) # 5-15% lower for contracts
-    PREFERRED_VENDOR_DISCOUNT_PERCENTAGE = (0.10, 0.15) # 10-15% better pricing
+    PRICE_VOLATILITY_PERCENTAGE = 0.15
+    CONTRACT_PRICE_DISCOUNT_PERCENTAGE = (0.05, 0.15)
+    PREFERRED_VENDOR_DISCOUNT_PERCENTAGE = (0.10, 0.15)
 
-    # EKKO - Purchase Order Headers
+    # PO Headers (EKKO)
     COMPANY_CODES = ['1000', '2000', '3000']
     PURCHASING_ORGANIZATIONS = ['P001', 'P002']
     PURCHASING_GROUPS = ['PG01', 'PG02', 'PG03']
     CURRENCIES = ['USD', 'EUR', 'GBP']
-    CONTRACT_PO_PERCENTAGE = (0.60, 0.80) # 60-80% contract-based
+    CONTRACT_PO_PERCENTAGE = (0.60, 0.80)
 
-    # EKPO - PO Line Items
-    LINE_ITEMS_PER_PO_MEAN = 4 # Log-normal distribution mean
+    # PO Line Items (EKPO)
+    LINE_ITEMS_PER_PO_MEAN = 4
     LINE_ITEMS_PER_PO_MAX = 15
     PLANTS = ['PL01', 'PL02', 'PL03']
-
 ```
 
-### How to Customize the Output
+### Customize the Output
 
-| Requirement | Edit in config.json |
-|------------|----------------------|
-| Increase vendors | `NUM_VENDORS=5000` |
-| Increase contract price discount | `CONTRACT_PRICE_DISCOUNT_PERCENTAGE= (0.05,0.1)` |
-| Increase PO volume | `NUM_PO_HEADERS=1200` |
+| Requirement                  | Change in `config.py`                          |
+|------------------------------|-----------------------------------------------|
+| Increase vendors             | `NUM_VENDORS = 5000`                          |
+| Raise contract price discount| `CONTRACT_PRICE_DISCOUNT_PERCENTAGE = (0.05, 0.1)` |
+| Increase PO volume           | `NUM_PO_HEADERS = 12000`                      |
 
-
-After editing the config file, rerun the generator.
+After editing `config.py`, rerun the generator.
 
 ---
 
@@ -166,17 +128,11 @@ After editing the config file, rerun the generator.
 
 ```bash
 python -m venv venv
-source venv/bin/activate   # Mac/Linux
-venv\Scripts\activate      # Windows
-```
+source venv/bin/activate    # Mac/Linux
+venv\Scripts\activate       # Windows
 
-Install required packages:
-
-```bash
 pip install -r requirements.txt
 ```
-
----
 
 ### 2. Run the Generator
 
@@ -184,51 +140,47 @@ pip install -r requirements.txt
 python src/data_generator/SAPDataGenerator.py
 ```
 
-This generates:
+**Generated:**
 
-- Vendors  
-- Materials  
-- POs & PO items  
-- PO history 
-- Vendor Contract
+- Vendors
+- Materials
+- POs & PO items
+- PO history
+- Vendor Contracts
 
-Outputs are stored in `/generated_sap_data/`.
-
----
-
-## ✔️ Running Validation Scripts
-# 🧪 Data Quality Validation Framework
-
-The **Data Quality (DQ) Validation Framework** is a modular, configurable engine designed to validate the integrity, structure, and business-rule correctness of the synthetic SAP datasets generated by the project.
-
-It provides a centralized way to define validation rules, run quality checks, and generate automated data quality reports.
+Outputs are saved to: `/generated_sap_data/`
 
 ---
 
-## ✨ Key Validation Areas
+## 🧪 Data Quality Validation Framework
 
-This validation layer ensures that the generated dataset meets the following quality criteria:
+The **Data Quality (DQ) Validation Framework** checks the integrity, structure, and business-rule correctness of the synthetic SAP datasets. It offers:
 
-* **Schema Compliant:** Columns, datatypes, and nullability are correct.
-* **Referentially Consistent:** Primary-Foreign key relationships are maintained.
-* **Business-Rule Accurate:** Domain-specific logic is enforced.
-* **Realistic:** Suitable for analytics and process mining use cases.
+- **Centralized rule definition**
+- **Automated quality reports**
+- **Configurable validation behavior**
 
 ---
 
-## ⚙️ Configuration (`dq_config.json`)
+### ✨ Key Validation Areas
 
-All validation behavior is controlled through the **`dq_config.json`** file. This allows you to update rules without modifying the core Python code.
+- **Schema compliance:** Column names, types, nullability
+- **Referential consistency:** Primary & foreign keys
+- **Business-rule logic:** Domain-specific checks
+- **Realism:** Fit for analytics/process mining
 
-You can configure the following elements:
+---
 
-* **Table schemas:** Defining required columns and expected datatypes.
-* **Relationships:** Primary & foreign key relationships and cross-table dependencies.
-* **Threshold-based rules:** E.g., `quantity > 0`.
-* **Date & process rules:** E.g., `Goods Receipt Date (GR) ≥ Purchase Order Date (PO date)`.
-* **Rule properties:** Defining **severity** (Error/Warning) and **weightage** for the DQ Score calculation.
+### ⚙️ Configure (`dq_config.json`)
 
-### Example `dq_config` Snippet
+Validation is configured in `dq_config.json`. You can set:
+
+- Table schemas: required columns and types
+- Relationships: key dependencies
+- Rules: threshold and domain checks
+- Severity/weight: each rule’s impact on the overall DQ score
+
+**Example:**
 
 ```json
 {
@@ -254,41 +206,49 @@ You can configure the following elements:
     }
   }
 }
+```
 
-## Running the Validation Pipeline
--The main entry point is data_quality.py
-'''
+---
 
-##📄 Validation WorkflowWhen executed,
- the pipeline performs checks in the following sequence:
--1️⃣ Schema ValidationColumn presenceDatatype matchingNullability constraints
--2️⃣ Relationship ValidationPrimary key uniquenessForeign key matchingTable dependency checks
--3️⃣ Business Rule ValidationRuns domain-specific checks defined in dq_config.json, e.g., "GR date must be $\ge$ PO date," "Invoice quantity must match GR quantity," etc.
--4️⃣ Score CalculationA final DQ Score is computed using the weighted outcomes of all rules, where each rule's weight is defined in dq_config.json.
-'''
+## 📄 Validation Workflow
 
-##Example Terminal Output
+Main entry point: `data_quality.py`
+
+**Pipeline steps:**
+
+1. **Schema Validation**
+   - Column presence
+   - Datatypes
+   - Nullability
+2. **Relationship Validation**
+   - Primary key uniqueness
+   - Foreign key matching
+   - Dependency checks
+3. **Business Rule Validation**
+   - Rules from `dq_config.json` (e.g., "GR date ≥ PO date", "Invoice qty matches GR qty")
+4. **Score Calculation**
+   - Weighted DQ Score from rule results
+
+---
+
+### Example Terminal Output
+
+```
 Schema validation: Passed with 2 warnings
 Relationship validation: Passed
 Business rules: 3 rules violated
 DQ Score: 86.7%
+```
 
-Generated:
- - dq_results.json
- - dq_report.html
+**Generated:**
+- `dq_results.json`: Per-rule results, severity, error counts, scores, overall DQ Score (automation/debugging)
+- `dq_report.html`: Interactive dashboard (overview, summaries, rule drill-down, visualization)
 
-##Output Files
-After running, two outputs are generated:
-1. JSON Report — dq_results.json
-   - Contains: Pass/fail per rule, Rule severity, Error counts, Table-level scores, The final overall DQ Score.
-   - Useful for automation or debugging.
-2. HTML Dashboard — dq_report.html
-   - A visual, interactive dashboard: Overview of DQ performance, Error summaries, Rule-level results, DQ Score visualization, Drill-down per table.
-   - This file is ideal for demos and internal presentations.
+**Extending Validation:**
 
-##Extending the Validation Engine
-You can easily add:
-- New rules by editing dq_config.json
-- New validation modules inside the data_quality folder
-- Additional visualizations in the HTML dashboard
-The architecture is designed for extensibility.
+- Add/edit rules in `dq_config.json`
+- Add validation modules to `data_quality/`
+- Enhance visualizations in `dq_report.html`
+- Flexible architecture for new requirements
+
+---
