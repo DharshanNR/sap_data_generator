@@ -7,10 +7,11 @@ The **SAP Data Generator** is a modular Python-based framework that generates re
 - Vendor master creation  
 - Material master generation  
 - Purchase order creation  
-- Goods receipts  
-- Invoice posting  
+- Purchase order line item creation
+- Purchase order Hisory creation
+- Vendor contract 
 
-The framework is fully configurable—you can control the number of vendors, materials, PO volume, distributions, noise levels, and business rules using a single **config.json** file.
+The framework is fully configurable—parameters such as vendor count, material count, PO volume, distributions, and process rules can be edited through the Config class, allowing you to customize data generation without modifying the core logic.
 
 This tool is useful for:
 
@@ -18,7 +19,7 @@ This tool is useful for:
 - Analytics use cases  
 - Data engineering practice  
 - Testing ETL pipelines  
-- Process mining (Celonis, Power BI, etc.)
+- Process mining 
 
 ---
 
@@ -36,27 +37,25 @@ This tool is useful for:
 ## 📁 Project Structure
 
 ```
-sap_data_generator/
+data_generator/
 │
-├── config/
-│   └── config.json
+
 │
-├── data/
+├── generated_sap_data/
 │   └── (Generated output files)
 │
 ├── src/
-│   ├── vendors.py
-│   ├── materials.py
-│   ├── purchase_orders.py
-│   ├── goods_receipt.py
-│   ├── invoices.py
-│   ├── utils.py
-│   └── main.py
+|    └── data_generator/
+│       ├── SAPDataGenerator.py
+│       ├── config.py
+│       ├── utilities.py
+|     └── data_quality/
+│       ├── ValidationResult.py
+│       ├── data_quality.py
+│       ├── dq_config.py
+│       └── utils.py.py
 │
-├── validation/
-│   ├── validate_po.py
-│   ├── validate_invoice.py
-│   └── validate_relations.py
+
 │
 └── README.md
 ```
@@ -65,29 +64,12 @@ sap_data_generator/
 
 ## ⚙️ How to Configure the Data Generation
 
-All parameters are controlled via **config/config.json**.
+All parameters are controlled via **config.py**.
 
 ### Sample Config
 
-```json
-{
-    "vendors": {
-        "count": 100,
-        "pareto_distribution": true,
-        "pareto_alpha": 1.5
-    },
-    "materials": {
-        "count": 200
-    },
-    "purchase_orders": {
-        "count": 5000,
-        "max_line_items": 5
-    },
-    "delays": {
-        "po_to_gr_days": [2, 10],
-        "gr_to_invoice_days": [1, 5]
-    }
-}
+```
+
 ```
 
 ### How to Customize the Output
@@ -126,7 +108,7 @@ pip install -r requirements.txt
 ### 2. Run the Generator
 
 ```bash
-python src/main.py
+python src/data_generator/SAPDataGenerator.py
 ```
 
 This generates:
@@ -134,10 +116,10 @@ This generates:
 - Vendors  
 - Materials  
 - POs & PO items  
-- Goods Receipts  
-- Invoices  
+- PO history 
+- Vendor Contract
 
-Outputs are stored in `/data/`.
+Outputs are stored in `/generated_sap_data/`.
 
 ---
 
@@ -166,13 +148,13 @@ python validation/validate_relations.py
 ## 📌 Example Output Files
 
 ```
-data/
-│ vendor_master.csv
-│ material_master.csv
-│ purchase_orders.csv
-│ po_items.csv
-│ goods_receipts.csv
-│ invoices.csv
+genrated_sap_datae/
+│ LFA1.csv
+│ MARA.csv
+│ EKKO.csv
+│ EKPO.csv
+│ EKBE.csv
+│ vendor_contracts.csv
 ```
 
 ---
