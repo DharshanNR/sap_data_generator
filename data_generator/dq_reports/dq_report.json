@@ -1,0 +1,348 @@
+{
+    "overall_dq_score": 93.43,
+    "summary": {
+        "pass_count": 19,
+        "fail_count": 2,
+        "warning_count": 1,
+        "critical_issues": 2,
+        "warning_issues": 1,
+        "info_issues": 1
+    },
+    "detailed_findings": {
+        "referential_integrity": [
+            {
+                "category": "referential_integrity",
+                "check_name": "EKPO.EBELN in EKKO",
+                "status": "PASS",
+                "severity": "Info",
+                "description": "All EKPO.EBELN exist in EKKO.",
+                "violations": 0,
+                "affected_percentage": 0.0,
+                "examples": []
+            },
+            {
+                "category": "referential_integrity",
+                "check_name": "EKKO.LIFNR in LFA1",
+                "status": "PASS",
+                "severity": "Info",
+                "description": "All EKKO.LIFNR exist in LFA1.",
+                "violations": 0,
+                "affected_percentage": 0.0,
+                "examples": []
+            },
+            {
+                "category": "referential_integrity",
+                "check_name": "EKPO.MATNR in MARA",
+                "status": "PASS",
+                "severity": "Info",
+                "description": "All EKPO.MATNR exist in MARA.",
+                "violations": 0,
+                "affected_percentage": 0.0,
+                "examples": []
+            },
+            {
+                "category": "referential_integrity",
+                "check_name": "EKBE.EBELN+EBELP in EKPO",
+                "status": "PASS",
+                "severity": "Info",
+                "description": "All EKBE.EBELN+EBELP exist in EKPO.",
+                "violations": 0,
+                "affected_percentage": 0.0,
+                "examples": []
+            },
+            {
+                "category": "referential_integrity",
+                "check_name": "VENDOR_CONTRACTS.LIFNR in LFA1",
+                "status": "PASS",
+                "severity": "Info",
+                "description": "All VENDOR_CONTRACTS.LIFNR exist in LFA1.",
+                "violations": 0,
+                "affected_percentage": 0.0,
+                "examples": []
+            },
+            {
+                "category": "referential_integrity",
+                "check_name": "VENDOR_CONTRACTS.MATNR in MARA",
+                "status": "PASS",
+                "severity": "Info",
+                "description": "All VENDOR_CONTRACTS.MATNR exist in MARA.",
+                "violations": 0,
+                "affected_percentage": 0.0,
+                "examples": []
+            }
+        ],
+        "business_logic_validation": [
+            {
+                "category": "business_logic_validation",
+                "check_name": "EKPO.NETWR Calculation",
+                "status": "PASS",
+                "severity": "Info",
+                "description": "All EKPO.NETWR calculations are correct.",
+                "violations": 0,
+                "affected_percentage": 0.0,
+                "examples": []
+            },
+            {
+                "category": "business_logic_validation",
+                "check_name": "Delivery Date vs PO Date",
+                "status": "PASS",
+                "severity": "Info",
+                "description": "All delivery dates are after PO dates.",
+                "violations": 0,
+                "affected_percentage": 0.0,
+                "examples": []
+            },
+            {
+                "category": "business_logic_validation",
+                "check_name": "Contract PO Price Adherence",
+                "status": "PASS",
+                "severity": "Info",
+                "description": "Contract PO prices adhere to contract terms.",
+                "violations": 0,
+                "affected_percentage": 0.0,
+                "examples": []
+            },
+            {
+                "category": "business_logic_validation",
+                "check_name": "Invoice vs GR Amount Match",
+                "status": "PASS",
+                "severity": "Info",
+                "description": "Invoice amounts match GR amounts.",
+                "violations": 0,
+                "affected_percentage": 0.0,
+                "examples": []
+            },
+            {
+                "category": "business_logic_validation",
+                "check_name": "Contract Date Validity",
+                "status": "PASS",
+                "severity": "Info",
+                "description": "All contract dates are valid.",
+                "violations": 0,
+                "affected_percentage": 0.0,
+                "examples": []
+            },
+            {
+                "category": "business_logic_validation",
+                "check_name": "Invoice Date After GR Date",
+                "status": "PASS",
+                "severity": "Info",
+                "description": "All invoice dates are after goods receipt dates.",
+                "violations": 0,
+                "affected_percentage": 0.0,
+                "examples": []
+            },
+            {
+                "category": "business_logic_validation",
+                "check_name": "Blocked Vendors Recent POs",
+                "status": "INFO",
+                "severity": "Info",
+                "description": "No blocked vendors found.",
+                "violations": 0,
+                "affected_percentage": 0.0,
+                "examples": []
+            }
+        ],
+        "statistical_validation": [
+            {
+                "category": "statistical_validation",
+                "check_name": "Price Outliers by Material Category",
+                "status": "PASS",
+                "severity": "Info",
+                "description": "No significant price outliers detected.",
+                "violations": 0,
+                "affected_percentage": 0.0,
+                "examples": []
+            },
+            {
+                "category": "statistical_validation",
+                "check_name": "Vendor Spend Pareto Principle",
+                "status": "WARNING",
+                "severity": "Warning",
+                "description": "Pareto principle check failed: Top 20% vendors account for 45.48% of spend, expected ~80% (\u00b110.0%).",
+                "violations": 1,
+                "affected_percentage": 100.0,
+                "examples": []
+            },
+            {
+                "category": "statistical_validation",
+                "check_name": "Contract Compliance Rate",
+                "status": "PASS",
+                "severity": "Info",
+                "description": "Contract compliance rate is within expected range.",
+                "violations": 0,
+                "affected_percentage": 0.0,
+                "examples": []
+            },
+            {
+                "category": "statistical_validation",
+                "check_name": "Late Delivery Rate",
+                "status": "PASS",
+                "severity": "Info",
+                "description": "Late delivery rate is within expected range.",
+                "violations": 0,
+                "affected_percentage": 0.0,
+                "examples": []
+            },
+            {
+                "category": "statistical_validation",
+                "check_name": "GR to Invoice Ratio",
+                "status": "PASS",
+                "severity": "Info",
+                "description": "GR to Invoice ratio is within expected range.",
+                "violations": 0,
+                "affected_percentage": 0.0,
+                "examples": []
+            }
+        ],
+        "completeness_checks": [
+            {
+                "category": "completeness_checks",
+                "check_name": "PO with Line Items",
+                "status": "FAIL",
+                "severity": "Critical",
+                "description": "Some Purchase Orders (EKKO) have no corresponding line items (EKPO).",
+                "violations": 4,
+                "affected_percentage": 4.0,
+                "examples": [
+                    "PO0000000097",
+                    "PO0000000098",
+                    "PO0000000099",
+                    "PO0000000100"
+                ]
+            },
+            {
+                "category": "completeness_checks",
+                "check_name": "PO Line Item with GR",
+                "status": "FAIL",
+                "severity": "Critical",
+                "description": "Some PO line items (EKPO) have no corresponding Goods Receipt (EKBE BEWTP='E').",
+                "violations": 324,
+                "affected_percentage": 81.0,
+                "examples": [
+                    [
+                        "PO0000000020",
+                        "LI00002"
+                    ],
+                    [
+                        "PO0000000020",
+                        "LI00003"
+                    ],
+                    [
+                        "PO0000000021",
+                        "LI00001"
+                    ],
+                    [
+                        "PO0000000021",
+                        "LI00002"
+                    ],
+                    [
+                        "PO0000000021",
+                        "LI00003"
+                    ]
+                ]
+            },
+            {
+                "category": "completeness_checks",
+                "check_name": "Material Group Balance",
+                "status": "PASS",
+                "severity": "Info",
+                "description": "Material groups are balanced.",
+                "violations": 0,
+                "affected_percentage": 0.0,
+                "examples": []
+            },
+            {
+                "category": "completeness_checks",
+                "check_name": "Overall Date Range",
+                "status": "PASS",
+                "severity": "Info",
+                "description": "Overall data date range is correct.",
+                "violations": 0,
+                "affected_percentage": 0.0,
+                "examples": []
+            },
+            {
+                "category": "completeness_checks",
+                "check_name": "Valid Currency Codes",
+                "status": "PASS",
+                "severity": "Info",
+                "description": "Currency codes are validated by schema check (EKKO.WAERS).",
+                "violations": 0,
+                "affected_percentage": 0.0,
+                "examples": []
+            }
+        ]
+    },
+    "data_profile": {
+        "record_counts": {
+            "LFA1": 10,
+            "MARA": 500,
+            "EKKO": 100,
+            "EKPO": 400,
+            "EKBE": 300,
+            "VENDOR_CONTRACTS": 200
+        },
+        "date_range_coverage": {
+            "LFA1.ERDAT": {
+                "min": "2020-07-28",
+                "max": "2024-04-03"
+            },
+            "MARA.ERSDA": {
+                "min": "2020-01-02",
+                "max": "2024-12-28"
+            },
+            "EKKO.AEDAT": {
+                "min": "2020-04-07",
+                "max": "2024-12-23"
+            },
+            "EKKO.BEDAT": {
+                "min": "2020-04-07",
+                "max": "2024-12-23"
+            },
+            "EKPO.EINDT": {
+                "min": "2020-04-23",
+                "max": "2025-02-15"
+            },
+            "EKBE.BUDAT": {
+                "min": "2020-06-11",
+                "max": "2025-03-19"
+            },
+            "VENDOR_CONTRACTS.VALID_FROM": {
+                "min": "2020-01-01",
+                "max": "2024-08-12"
+            },
+            "VENDOR_CONTRACTS.VALID_TO": {
+                "min": "2020-01-27",
+                "max": "2026-12-30"
+            }
+        },
+        "spend_by_vendor": {
+            "V0000002": 657611810.21,
+            "V0000001": 470382238.02,
+            "V0000010": 115256599.21,
+            "V0000009": 97951667.41,
+            "V0000003": 45801027.69,
+            "V0000008": 26715037.36,
+            "V0000007": 14464006.2,
+            "V0000005": 9502319.86,
+            "V0000004": 8353229.58
+        },
+        "spend_by_material_category": {
+            "Electronics": 272582337.08,
+            "Office Supplies": 11127156.03,
+            "Raw Materials": 140276147.68,
+            "Services": 1022052294.75
+        },
+        "materials_by_category": {
+            "Electronics": 135,
+            "Office Supplies": 131,
+            "Services": 118,
+            "Raw Materials": 116
+        },
+        "avg_items_per_po": 4.166666666666667,
+        "max_items_per_po": "12",
+        "avg_ekbe_per_ekpo_item": 3.9473684210526314,
+        "max_ekbe_per_ekpo_item": "6"
+    }
+}
