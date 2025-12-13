@@ -6,8 +6,8 @@
 
 The **SAP Data Generator** is a modular Python-based framework for generating realistic synthetic SAP Procure-to-Pay (P2P) datasets. It simulates business processes including:
 
-🔹 Vendor master creation
-🔹 Material master generation
+🔹-- Vendor master creation
+🔹-- Material master generation
 🔹 Purchase order creation
 🔹 Purchase order line item creation
 🔹 Purchase order history creation
