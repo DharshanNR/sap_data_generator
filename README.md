@@ -6,24 +6,12 @@
 
 The **SAP Data Generator** is a modular Python-based framework for generating realistic synthetic SAP Procure-to-Pay (P2P) datasets. It simulates business processes including:
 
-- Vendor master creation
-- Material master generation
-- Purchase order creation
-- Purchase order line item creation
-- Purchase order history creation
-- Vendor contract creation
-
-**Configurable:** Parameters (vendor count, material count, PO volume, distributions, process rules) are set via the `Config` class, so you can tailor data generation to your use case.
-
-**Typical uses:**
-
-- Demo datasets
-- Analytics use cases
-- Data engineering practice
-- Testing ETL pipelines
-- Process mining
-
----
+🔹 Vendor master creation
+🔹 Material master generation
+🔹 Purchase order creation
+🔹 Purchase order line item creation
+🔹 Purchase order history creation
+🔹 Vendor contract creation
 
 ## 🛠 Features
 
@@ -37,14 +25,6 @@ GitHub
 
 🔹 Realistic business process simulation
 Simulates end-to-end processes including vendor master, material master, purchase order creation, line items, history, and vendor contracts. 
-GitHub
-
-🔹 Linked transactional datasets
-Generates relational and logically consistent data across tables (e.g., vendors linked to POs). 
-GitHub
-
-🔹 Supports multiple output formats
-Ability to export generated data as CSV or Parquet. 
 GitHub
 
 🔹 Lightweight and easily extensible architecture
@@ -67,6 +47,20 @@ GitHub
 Useful for building demo datasets, data engineering pipelines, ETL testing, analytics, and process mining exercises
 
 ---
+
+**Configurable:** Parameters (vendor count, material count, PO volume, distributions, process rules) are set via the `Config` class, so you can tailor data generation to your use case.
+
+**Typical uses:**
+
+- Demo datasets
+- Analytics use cases
+- Data engineering practice
+- Testing ETL pipelines
+- Process mining
+
+---
+
+
 
 ## 📁 Project Structure
 
