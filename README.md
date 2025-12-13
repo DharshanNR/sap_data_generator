@@ -27,12 +27,44 @@ The **SAP Data Generator** is a modular Python-based framework for generating re
 
 ## 🛠 Features
 
-- Flexible data volume (vendors, materials, POs, etc.)
-- Supports statistical distributions (uniform, pareto, exponential, etc.)
-- Generates linked transactions across tables
-- Simulates realistic delays (PO → GR → Invoice)
-- Lightweight, modular codebase
-- Built-in data quality validation scripts
+🔹 Modular Python-based framework for SAP synthetic data generation
+A structured Python project to generate realistic SAP Procure-to-Pay (P2P) data. 
+GitHub
+
+🔹 Configurable dataset size and distributions
+Users can adjust parameters such as number of vendors, materials, purchase orders, and statistical distributions (e.g., uniform, Pareto, exponential). 
+GitHub
+
+🔹 Realistic business process simulation
+Simulates end-to-end processes including vendor master, material master, purchase order creation, line items, history, and vendor contracts. 
+GitHub
+
+🔹 Linked transactional datasets
+Generates relational and logically consistent data across tables (e.g., vendors linked to POs). 
+GitHub
+
+🔹 Supports multiple output formats
+Ability to export generated data as CSV or Parquet. 
+GitHub
+
+🔹 Lightweight and easily extensible architecture
+Written with modular code to simplify extension and customization. 
+GitHub
+
+🔹 Config file driven customization
+All major parameters (date range, record counts, pricing logic, plant codes, etc.) are controlled via a central Config class. 
+GitHub
+
+🔹 Business-oriented data quality validation framework
+Includes scripts to validate dataset integrity, schema compliance, referential consistency, and business rule correctness. 
+GitHub
+
+🔹 Automated data quality reporting
+Generates reports (JSON/HTML) detailing validation results, helping ensure generated data meets expected quality standards. 
+GitHub
+
+🔹 Ideal for demo, analytics & testing
+Useful for building demo datasets, data engineering pipelines, ETL testing, analytics, and process mining exercises
 
 ---
 
