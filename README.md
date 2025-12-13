@@ -17,27 +17,21 @@ The **SAP Data Generator** is a modular Python-based framework for generating re
 
 🔹 Modular Python-based framework for SAP synthetic data generation
 A structured Python project to generate realistic SAP Procure-to-Pay (P2P) data. 
-GitHub
 
 🔹 Configurable dataset size and distributions
 Users can adjust parameters such as number of vendors, materials, purchase orders, and statistical distributions (e.g., uniform, Pareto, exponential). 
-GitHub
 
 🔹 Realistic business process simulation
 Simulates end-to-end processes including vendor master, material master, purchase order creation, line items, history, and vendor contracts. 
-GitHub
 
 🔹 Lightweight and easily extensible architecture
 Written with modular code to simplify extension and customization. 
-GitHub
 
 🔹 Config file driven customization
 All major parameters (date range, record counts, pricing logic, plant codes, etc.) are controlled via a central Config class. 
-GitHub
 
 🔹 Business-oriented data quality validation framework
 Includes scripts to validate dataset integrity, schema compliance, referential consistency, and business rule correctness. 
-GitHub
 
 🔹 Automated data quality reporting
 Generates reports (JSON/HTML) detailing validation results, helping ensure generated data meets expected quality standards. 
@@ -47,6 +41,25 @@ GitHub
 Useful for building demo datasets, data engineering pipelines, ETL testing, analytics, and process mining exercises
 
 ---
+
+## 🛠️ Technology Stack
+Programming Language
+    Python 3.x -Core language used for data generation, business logic implementation, and validations.
+    
+Data Processing & Logic
+
+    Python Standard Libraries
+
+    random – probabilistic and weighted data generation
+
+    datetime – date range handling and document timelines
+
+     pricing and distribution calculations
+
+    NumPy Used for statistical distributions such as Pareto, uniform, and weighted selections.
+
+
+Collaboration and documentation
 
 **Configurable:** Parameters (vendor count, material count, PO volume, distributions, process rules) are set via the `Config` class, so you can tailor data generation to your use case.
 
@@ -70,15 +83,31 @@ data_generator/
 │   └── (Generated output files)
 ├── src/
 │   └── data_generator/
-│       ├── SAPDataGenerator.py
-│       ├── config.py
-│       ├── utilities.py
-│       └── data_quality/
+│           ├── SAPDataGenerator.py
+│           ├── config.py
+│           ├── utilities.py
+|           └── __init__.py
+│   └── data_quality/
 │           ├── ValidationResult.py
 │           ├── data_quality.py
 │           ├── dq_config.py
-│           └── utils.py
+│           └── dq_utils.py
+|           └── __init__.py
+|── tests/
+|    ├── config.py
+│    ├── conftest.py
+|    ├── test_analytics.py
+│    ├── test_data_quality.py
+|    ├── __init__.py
+|── dashboard/
+|    ├── dashboard.py
+│    ├── dashboard_prep.py
+|    ├── style.css
+│           
+|── __init__.py
+|── pytest.ini
 └── README.md
+└── requirements.txt
 ```
 
 ---
