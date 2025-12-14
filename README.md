@@ -39,6 +39,17 @@ The system follows a layered, modular architecture designed for:
 
 - Analytics readiness (downstream dashboards & reports)
 
+'''
+Config Files
+    ↓
+Master Data Generators with all the parameters in config files
+    ↓
+Data Quality Validation
+    ↓
+Analytics & Dashboard Consumption
+
+'''
+
 ---
 ## 🛠️ Technology Stack
 Programming Language
