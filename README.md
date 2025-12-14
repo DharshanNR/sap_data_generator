@@ -41,7 +41,18 @@ GitHub
 Useful for building demo datasets, data engineering pipelines, ETL testing, analytics, and process mining exercises
 
 ---
+## 🏗️ SAP Data Generator – Architecture Overview
+The system follows a layered, modular architecture designed for:
 
+- Scalability (large data volumes)
+
+- Configurability (business rules via config files)
+
+- Testability (deterministic generation & validation)
+
+- Analytics readiness (downstream dashboards & reports)
+
+---
 ## 🛠️ Technology Stack
 Programming Language
     Python 3.x -Core language used for data generation, business logic implementation, and validations.
