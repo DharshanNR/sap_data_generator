@@ -53,19 +53,13 @@ Analytics & Dashboard Consumption
 ---
 ## 🛠️ Technology Stack
 Programming Language
-    Python 3.x -Core language used for data generation, business logic implementation, and validations.
+    Python 
+    Pandas
+    Numpy
+    faker
+    streamlit
     
-Data Processing & Logic
-
-    Python Standard Libraries
-
-    random – probabilistic and weighted data generation
-
-    datetime – date range handling and document timelines
-
-     pricing and distribution calculations
-
-    NumPy Used for statistical distributions such as Pareto, uniform, and weighted selections.
+    
 
 
 Collaboration and documentation
