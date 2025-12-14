@@ -6,39 +6,26 @@
 
 The **SAP Data Generator** is a modular Python-based framework for generating realistic synthetic SAP Procure-to-Pay (P2P) datasets. It simulates business processes including:
 
-🔹Vendor master creation
-🔹 Material master generation
-🔹 Purchase order creation
-🔹 Purchase order line item creation
-🔹 Purchase order history creation
-🔹 Vendor contract creation
+- Vendor master creation
+- Material master generation
+- Purchase order creation
+- Purchase order line item creation
+- Purchase order history creation
+- Vendor contract creation
 
 ## 🛠 Features
 
-🔹 Modular Python-based framework for SAP synthetic data generation
+-  Modular Python-based framework for SAP synthetic data generation
 A structured Python project to generate realistic SAP Procure-to-Pay (P2P) data. 
 
-🔹 Configurable dataset size and distributions
+-  Configurable dataset size and distributions
 Users can adjust parameters such as number of vendors, materials, purchase orders, and statistical distributions (e.g., uniform, Pareto, exponential). 
 
-🔹 Realistic business process simulation
+-  Realistic business process simulation
 Simulates end-to-end processes including vendor master, material master, purchase order creation, line items, history, and vendor contracts. 
 
-🔹 Lightweight and easily extensible architecture
+- Lightweight and easily extensible architecture
 Written with modular code to simplify extension and customization. 
-
-🔹 Config file driven customization
-All major parameters (date range, record counts, pricing logic, plant codes, etc.) are controlled via a central Config class. 
-
-🔹 Business-oriented data quality validation framework
-Includes scripts to validate dataset integrity, schema compliance, referential consistency, and business rule correctness. 
-
-🔹 Automated data quality reporting
-Generates reports (JSON/HTML) detailing validation results, helping ensure generated data meets expected quality standards. 
-GitHub
-
-🔹 Ideal for demo, analytics & testing
-Useful for building demo datasets, data engineering pipelines, ETL testing, analytics, and process mining exercises
 
 ---
 ## 🏗️ SAP Data Generator – Architecture Overview
