@@ -667,7 +667,7 @@ pip install streamlit
 4. Start the dashboard application:
 
 ```bash
-streamlit run dashboard.py
+streamlit run dashboard/dashboard.py
 ```
 
 3. Open the local URL shown in the terminal to explore the dashboard
