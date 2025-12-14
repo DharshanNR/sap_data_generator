@@ -1,0 +1,383 @@
+
+        <!DOCTYPE html>
+        <html lang="en">
+        <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>SAP Data Quality Dashboard</title>
+            <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+            <style>
+                body { font-family: Arial, sans-serif; margin: 20px; background-color: #f4f7f6; color: #333; }
+                .container { max-width: 1200px; margin: auto; background: #fff; padding: 20px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+                h1, h2, h3 { color: #0056b3; }
+                .summary-card { background-color: #e9ecef; border-left: 5px solid #007bff; padding: 15px; margin-bottom: 15px; border-radius: 5px; }
+                .summary-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; margin-bottom: 30px; }
+                .summary-item { background-color: #f8f9fa; padding: 15px; border-radius: 5px; text-align: center; box-shadow: 0 1px 2px rgba(0,0,0,0.05); }
+                .summary-item h3 { margin-top: 0; font-size: 1.2em; color: #555; }
+                .summary-item p { font-size: 1.8em; font-weight: bold; margin: 5px 0; }
+                .status-PASS { color: #28a745; }
+                .status-FAIL { color: #dc3545; }
+                .status-WARNING { color: #ffc107; }
+                .severity-Critical { background-color: #f8d7da; color: #721c24; border-left: 5px solid #dc3545; }
+                .severity-Warning { background-color: #fff3cd; color: #856404; border-left: 5px solid #ffc107; }
+                .severity-Info { background-color: #d1ecf1; color: #0c5460; border-left: 5px solid #17a2b8; }
+                table { width: 100%; border-collapse: collapse; margin-top: 15px; }
+                th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+                th { background-color: #007bff; color: white; }
+                .accordion { background-color: #eee; color: #444; cursor: pointer; padding: 18px; width: 100%; text-align: left; border: none; outline: none; transition: 0.4s; font-size: 1.1em; margin-top: 10px; }
+                .active, .accordion:hover { background-color: #ccc; }
+                .panel { padding: 0 18px; background-color: white; max-height: 0; overflow: hidden; transition: max-height 0.2s ease-out; }
+                .chart-container { width: 48%; display: inline-block; margin: 1%; vertical-align: top; }
+                .chart-row { display: flex; flex-wrap: wrap; justify-content: space-between; margin-bottom: 20px; }
+            </style>
+        </head>
+        <body>
+            <div class="container">
+                <h1>SAP Data Quality Dashboard</h1>
+                <p>Generated on: 2025-12-14 00:08:33</p>
+
+                <div class="summary-card">
+                    <h2>Overall Data Quality Score: <span style="font-size: 2em; color: #dc3545">62.43/100</span></h2>
+                </div>
+
+                <h2>Summary Dashboard</h2>
+                <div class="summary-grid">
+                    <div class="summary-item"><h3>Total Checks</h3><p>27</p></div>
+                    <div class="summary-item status-PASS"><h3>Passed Checks</h3><p>18</p></div>
+                    <div class="summary-item status-FAIL"><h3>Failed Checks</h3><p>7</p></div>
+                    <div class="summary-item status-WARNING"><h3>Warning Checks</h3><p>2</p></div>
+                    <div class="summary-item severity-Critical"><h3>Critical Issues</h3><p>4</p></div>
+                    <div class="summary-item severity-Warning"><h3>Warning Issues</h3><p>5</p></div>
+                    <div class="summary-item severity-Info"><h3>Info Issues</h3><p>0</p></div>
+                </div>
+
+                <h2>Data Profile</h2>
+                <h3>Record Counts</h3>
+                <table>
+                    <thead><tr><th>Table</th><th>Records</th></tr></thead>
+                    <tbody>
+                        <tr><td>LFA1</td><td>1000</td></tr><tr><td>MARA</td><td>5000</td></tr><tr><td>EKKO</td><td>10000</td></tr><tr><td>EKPO</td><td>30000</td></tr><tr><td>EKBE</td><td>30000</td></tr><tr><td>VENDOR_CONTRACTS</td><td>5000</td></tr>
+                    </tbody>
+                </table>
+                <h3>Date Range Coverage</h3>
+                <table>
+                    <thead><tr><th>Field</th><th>Min Date</th><th>Max Date</th></tr></thead>
+                    <tbody>
+                        <tr><td>LFA1.ERDAT</td><td>2020-01-02</td><td>2024-12-30</td></tr><tr><td>MARA.ERSDA</td><td>2020-01-01</td><td>2024-12-30</td></tr><tr><td>EKKO.AEDAT</td><td>2020-01-01</td><td>2024-12-30</td></tr><tr><td>EKKO.BEDAT</td><td>2020-01-01</td><td>2024-12-30</td></tr><tr><td>EKPO.EINDT</td><td>2020-01-09</td><td>2025-02-26</td></tr><tr><td>EKBE.BUDAT</td><td>2020-01-12</td><td>2025-04-01</td></tr><tr><td>VENDOR_CONTRACTS.VALID_FROM</td><td>2020-01-01</td><td>2024-11-09</td></tr><tr><td>VENDOR_CONTRACTS.VALID_TO</td><td>2020-01-14</td><td>2026-12-30</td></tr>
+                    </tbody>
+                </table>
+                <h3>Distribution Statistics</h3>
+                <ul>
+                    <li><strong>Top 10 Vendors by Spend:</strong> {'V0000110': 1739470933.15, 'V0000038': 1698600471.88, 'V0000147': 1653462096.27, 'V0000077': 1466616484.18, 'V0000198': 1386504060.92, 'V0000155': 1339681578.64, 'V0000028': 1305973536.27, 'V0000128': 1303649167.04, 'V0000066': 1298315011.58, 'V0000102': 1295464759.83}</li>
+                    <li><strong>Spend by Material Category:</strong> {'Electronics': 16419960456.66, 'Office Supplies': 821014490.47, 'Raw Materials': 8519423519.79, 'Services': 92824606549.77}</li>
+                    <li><strong>Materials by Category:</strong> {'Services': 1270, 'Electronics': 1263, 'Raw Materials': 1249, 'Office Supplies': 1218}</li>
+                    <li><strong>Average Items per PO:</strong> 4.00</li>
+                    <li><strong>Max Items per PO:</strong> 15</li>
+                    <li><strong>Average EKBE records per EKPO item:</strong> 3.80</li>
+                    <li><strong>Max EKBE records per EKPO item:</strong> 6</li>
+                </ul>
+
+                <h2>Detailed Findings</h2>
+                <button class="accordion">Schema Validation</button><div class="panel">
+            <div class="summary-card severity-Critical">
+                <h3>LFA1.LAND1 - Null Values in Mandatory Field <span class="status-FAIL">(FAIL)</span></h3>
+                <p><strong>Description:</strong> Mandatory field 'LAND1' in 'LFA1' has null values.</p>
+                <p><strong>Violations:</strong> 3 (0.3%)</p>
+                <p><strong>Examples:</strong> V0000512, V0000871, V0000919</p>
+            </div>
+            
+            <div class="summary-card severity-Critical">
+                <h3>LFA1.LAND1 - Incorrect Data Type <span class="status-FAIL">(FAIL)</span></h3>
+                <p><strong>Description:</strong> Field 'LAND1' in 'LFA1' has incorrect data types.</p>
+                <p><strong>Violations:</strong> 3 (0.3%)</p>
+                <p><strong>Examples:</strong> V0000512, V0000871, V0000919</p>
+            </div>
+            
+            <div class="summary-card severity-Warning">
+                <h3>LFA1.LAND1 - Invalid Length <span class="status-FAIL">(FAIL)</span></h3>
+                <p><strong>Description:</strong> Field 'LAND1' in 'LFA1' has invalid length.</p>
+                <p><strong>Violations:</strong> 3 (0.3%)</p>
+                <p><strong>Examples:</strong> V0000512, V0000871, V0000919</p>
+            </div>
+            
+            <div class="summary-card severity-Warning">
+                <h3>LFA1.STRAS - Invalid Length <span class="status-FAIL">(FAIL)</span></h3>
+                <p><strong>Description:</strong> Field 'STRAS' in 'LFA1' has invalid length.</p>
+                <p><strong>Violations:</strong> 1 (0.1%)</p>
+                <p><strong>Examples:</strong> V0000607</p>
+            </div>
+            </div><button class="accordion">Referential Integrity</button><div class="panel">
+            <div class="summary-card severity-Info">
+                <h3>EKPO.EBELN in EKKO <span class="status-PASS">(PASS)</span></h3>
+                <p><strong>Description:</strong> All EKPO.EBELN exist in EKKO.</p>
+                <p><strong>Violations:</strong> 0 (0.0%)</p>
+                
+            </div>
+            
+            <div class="summary-card severity-Info">
+                <h3>EKKO.LIFNR in LFA1 <span class="status-PASS">(PASS)</span></h3>
+                <p><strong>Description:</strong> All EKKO.LIFNR exist in LFA1.</p>
+                <p><strong>Violations:</strong> 0 (0.0%)</p>
+                
+            </div>
+            
+            <div class="summary-card severity-Info">
+                <h3>EKPO.MATNR in MARA <span class="status-PASS">(PASS)</span></h3>
+                <p><strong>Description:</strong> All EKPO.MATNR exist in MARA.</p>
+                <p><strong>Violations:</strong> 0 (0.0%)</p>
+                
+            </div>
+            
+            <div class="summary-card severity-Info">
+                <h3>EKBE.EBELN+EBELP in EKPO <span class="status-PASS">(PASS)</span></h3>
+                <p><strong>Description:</strong> All EKBE.EBELN+EBELP exist in EKPO.</p>
+                <p><strong>Violations:</strong> 0 (0.0%)</p>
+                
+            </div>
+            
+            <div class="summary-card severity-Info">
+                <h3>VENDOR_CONTRACTS.LIFNR in LFA1 <span class="status-PASS">(PASS)</span></h3>
+                <p><strong>Description:</strong> All VENDOR_CONTRACTS.LIFNR exist in LFA1.</p>
+                <p><strong>Violations:</strong> 0 (0.0%)</p>
+                
+            </div>
+            
+            <div class="summary-card severity-Info">
+                <h3>VENDOR_CONTRACTS.MATNR in MARA <span class="status-PASS">(PASS)</span></h3>
+                <p><strong>Description:</strong> All VENDOR_CONTRACTS.MATNR exist in MARA.</p>
+                <p><strong>Violations:</strong> 0 (0.0%)</p>
+                
+            </div>
+            </div><button class="accordion">Business Logic Validation</button><div class="panel">
+            <div class="summary-card severity-Info">
+                <h3>EKPO.NETWR Calculation <span class="status-PASS">(PASS)</span></h3>
+                <p><strong>Description:</strong> All EKPO.NETWR calculations are correct.</p>
+                <p><strong>Violations:</strong> 0 (0.0%)</p>
+                
+            </div>
+            
+            <div class="summary-card severity-Info">
+                <h3>Delivery Date vs PO Date <span class="status-PASS">(PASS)</span></h3>
+                <p><strong>Description:</strong> All delivery dates are after PO dates.</p>
+                <p><strong>Violations:</strong> 0 (0.0%)</p>
+                
+            </div>
+            
+            <div class="summary-card severity-Info">
+                <h3>Contract PO Price Adherence <span class="status-PASS">(PASS)</span></h3>
+                <p><strong>Description:</strong> Contract PO prices adhere to contract terms.</p>
+                <p><strong>Violations:</strong> 0 (0.0%)</p>
+                
+            </div>
+            
+            <div class="summary-card severity-Warning">
+                <h3>Invoice vs GR Amount Match <span class="status-FAIL">(FAIL)</span></h3>
+                <p><strong>Description:</strong> Invoice amounts (DMBTR for BEWTP='Q') do not match Goods Receipt amounts (DMBTR for BEWTP='E') within 2.0% tolerance for the same PO item.</p>
+                <p><strong>Violations:</strong> 1157 (15.2%)</p>
+                <p><strong>Examples:</strong> ('PO0000000001', 'LI00002'), ('PO0000000001', 'LI00004'), ('PO0000000001', 'LI00005'), ('PO0000000003', 'LI00002'), ('PO0000000006', 'LI00002')</p>
+            </div>
+            
+            <div class="summary-card severity-Info">
+                <h3>Contract Date Validity <span class="status-PASS">(PASS)</span></h3>
+                <p><strong>Description:</strong> All contract dates are valid.</p>
+                <p><strong>Violations:</strong> 0 (0.0%)</p>
+                
+            </div>
+            
+            <div class="summary-card severity-Info">
+                <h3>Invoice Date After GR Date <span class="status-PASS">(PASS)</span></h3>
+                <p><strong>Description:</strong> All invoice dates are after goods receipt dates.</p>
+                <p><strong>Violations:</strong> 0 (0.0%)</p>
+                
+            </div>
+            
+            <div class="summary-card severity-Info">
+                <h3>Blocked Vendors Recent POs <span class="status-PASS">(PASS)</span></h3>
+                <p><strong>Description:</strong> No recent POs for blocked vendors.</p>
+                <p><strong>Violations:</strong> 0 (0.0%)</p>
+                
+            </div>
+            </div><button class="accordion">Statistical Validation</button><div class="panel">
+            <div class="summary-card severity-Info">
+                <h3>Price Outliers by Material Category <span class="status-PASS">(PASS)</span></h3>
+                <p><strong>Description:</strong> No significant price outliers detected.</p>
+                <p><strong>Violations:</strong> 0 (0.0%)</p>
+                
+            </div>
+            
+            <div class="summary-card severity-Info">
+                <h3>Vendor Spend Pareto Principle <span class="status-PASS">(PASS)</span></h3>
+                <p><strong>Description:</strong> Vendor spend distribution adheres to Pareto principle.</p>
+                <p><strong>Violations:</strong> 0 (0.0%)</p>
+                
+            </div>
+            
+            <div class="summary-card severity-Info">
+                <h3>Contract Compliance Rate <span class="status-PASS">(PASS)</span></h3>
+                <p><strong>Description:</strong> Contract compliance rate is within expected range.</p>
+                <p><strong>Violations:</strong> 0 (0.0%)</p>
+                
+            </div>
+            
+            <div class="summary-card severity-Warning">
+                <h3>Late Delivery Rate <span class="status-WARNING">(WARNING)</span></h3>
+                <p><strong>Description:</strong> Late delivery rate is 18.31%, expected between 20%-30%.</p>
+                <p><strong>Violations:</strong> 1 (100.0%)</p>
+                
+            </div>
+            
+            <div class="summary-card severity-Warning">
+                <h3>GR to Invoice Ratio <span class="status-WARNING">(WARNING)</span></h3>
+                <p><strong>Description:</strong> GR to Invoice ratio is 0.90, expected ~1:1 (±10.0%).</p>
+                <p><strong>Violations:</strong> 1 (100.0%)</p>
+                
+            </div>
+            </div><button class="accordion">Completeness Checks</button><div class="panel">
+            <div class="summary-card severity-Critical">
+                <h3>PO with Line Items <span class="status-FAIL">(FAIL)</span></h3>
+                <p><strong>Description:</strong> Some Purchase Orders (EKKO) have no corresponding line items (EKPO).</p>
+                <p><strong>Violations:</strong> 2508 (25.08%)</p>
+                <p><strong>Examples:</strong> PO0000007493, PO0000007494, PO0000007495, PO0000007496, PO0000007497</p>
+            </div>
+            
+            <div class="summary-card severity-Critical">
+                <h3>PO Line Item with GR <span class="status-FAIL">(FAIL)</span></h3>
+                <p><strong>Description:</strong> Some PO line items (EKPO) have no corresponding Goods Receipt (EKBE BEWTP='E').</p>
+                <p><strong>Violations:</strong> 22110 (73.7%)</p>
+                <p><strong>Examples:</strong> ('PO0000001958', 'LI00001'), ('PO0000001958', 'LI00002'), ('PO0000001958', 'LI00003'), ('PO0000001958', 'LI00004'), ('PO0000001959', 'LI00001')</p>
+            </div>
+            
+            <div class="summary-card severity-Info">
+                <h3>Material Group Balance <span class="status-PASS">(PASS)</span></h3>
+                <p><strong>Description:</strong> Material groups are balanced.</p>
+                <p><strong>Violations:</strong> 0 (0.0%)</p>
+                
+            </div>
+            
+            <div class="summary-card severity-Info">
+                <h3>Overall Date Range <span class="status-PASS">(PASS)</span></h3>
+                <p><strong>Description:</strong> Overall data date range is correct.</p>
+                <p><strong>Violations:</strong> 0 (0.0%)</p>
+                
+            </div>
+            
+            <div class="summary-card severity-Info">
+                <h3>Valid Currency Codes <span class="status-PASS">(PASS)</span></h3>
+                <p><strong>Description:</strong> Currency codes are validated by schema check (EKKO.WAERS).</p>
+                <p><strong>Violations:</strong> 0 (0.0%)</p>
+                
+            </div>
+            </div>
+
+                <h2>Visualizations</h2>
+                <div class="chart-row">
+                    <div class="chart-container"><canvas id="spendDistributionChart"></canvas></div>
+                    <div class="chart-container"><canvas id="deliveryPerformanceChart"></canvas></div>
+                </div>
+                <div class="chart-row">
+                    <div class="chart-container"><canvas id="priceVarianceChart"></canvas></div>
+                    <div class="chart-container"><canvas id="materialCompletenessChart"></canvas></div>
+                </div>
+
+            </div>
+            <script>
+                var acc = document.getElementsByClassName("accordion");
+                var i;
+                for (i = 0; i < acc.length; i++) {
+                    acc[i].addEventListener("click", function() {
+                        this.classList.toggle("active");
+                        var panel = this.nextElementSibling;
+                        if (panel.style.maxHeight) {
+                            panel.style.maxHeight = null;
+                        } else {
+                            panel.style.maxHeight = panel.scrollHeight + "px";
+                        } 
+                    });
+                }
+                
+            new Chart(document.getElementById('spendDistributionChart'), {
+                type: 'bar',
+                data: {
+                    labels: ["Electronics", "Office Supplies", "Raw Materials", "Services"],
+                    datasets: [{
+                        label: 'Total Spend',
+                        data: [16419960456.66, 821014490.47, 8519423519.79, 92824606549.77],
+                        backgroundColor: ['#007bff', '#28a745', '#ffc107', '#dc3545'],
+                        borderColor: ['#007bff', '#28a745', '#ffc107', '#dc3545'],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    plugins: { title: { display: true, text: 'Spend Distribution by Material Category' } },
+                    scales: { y: { beginAtZero: true, title: { display: true, text: 'Spend ($)' } } }
+                }
+            });
+            
+
+                    new Chart(document.getElementById('deliveryPerformanceChart'), {
+                        type: 'pie',
+                        data: {
+                            labels: ['On-Time', 'Late'],
+                            datasets: [{
+                                data: [12900, 2891],
+                                backgroundColor: ['#28a745', '#dc3545'],
+                                hoverOffset: 4
+                            }]
+                        },
+                        options: {
+                            responsive: true,
+                            plugins: { title: { display: true, text: 'Delivery Performance' } }
+                        }
+                    });
+                    
+
+                new Chart(document.getElementById('priceVarianceChart'), {
+                    type: 'bar',
+                    data: {
+                        labels: ["-15.0--13.5%", "-13.5--12.0%", "-12.0--10.5%", "-10.5--9.0%", "-9.0--7.5%", "-7.5--6.0%", "-6.0--4.5%", "-4.5--3.0%", "-3.0--1.5%", "-1.5--0.0%", "-0.0-1.5%", "1.5-3.0%", "3.0-4.5%", "4.5-6.0%", "6.0-7.5%", "7.5-9.0%", "9.0-10.5%", "10.5-12.0%", "12.0-13.5%", "13.5-15.0%"],
+                        datasets: [{
+                            label: 'Price Variance (%)',
+                            data: [4254, 4405, 3478, 3725, 3689, 4379, 2787, 262, 244, 254, 232, 274, 261, 223, 267, 253, 232, 271, 259, 251],
+                            backgroundColor: 'rgba(75, 192, 192, 0.6)',
+                            borderColor: 'rgba(75, 192, 192, 1)',
+                            borderWidth: 1
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        plugins: { title: { display: true, text: 'Price Variance Distribution (vs Base Price)' } },
+                        scales: {
+                            x: { title: { display: true, text: 'Variance (%)' } },
+                            y: { beginAtZero: true, title: { display: true, text: 'Number of Items' } }
+                        }
+                    }
+                });
+                
+
+            new Chart(document.getElementById('materialCompletenessChart'), {
+                type: 'bar',
+                data: {
+                    labels: ["LFA1.LAND1", "EKBE.ACTUAL_DELIVERY_DATE"],
+                    datasets: [{
+                        label: 'Null Percentage',
+                        data: [0.3, 47.36333333333334],
+                        backgroundColor: 'rgba(255, 99, 132, 0.6)',
+                        borderColor: 'rgba(255, 99, 132, 1)',
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    plugins: { title: { display: true, text: 'Null Value Completeness by Field' } },
+                    scales: {
+                        x: { ticks: { autoSkip: false, maxRotation: 45, minRotation: 45 } },
+                        y: { beginAtZero: true, max: 100, title: { display: true, text: 'Null %' } }
+                    }
+                }
+            });
+            
+            </script>
+        </body>
+        </html>
+        
