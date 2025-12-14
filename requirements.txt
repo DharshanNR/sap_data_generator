@@ -1,4 +1,5 @@
 # Core dependencies
 pandas>=1.5.0
 numpy>=1.23.
-faker>=18.0.0 
+Faker>=18.0.0 
+streamlit >=1.50.0
