@@ -42,11 +42,11 @@ The system follows a layered, modular architecture designed for:
 ```
 +-----------+     +-----------------------+    +-----------------------+     +---------------------+     +--------------------+
 | config.py | --> | SAPDatagenerator.py   | --> | generatedsapdata/     | --> | dataquality.py      | --> | dashboard.py       |
-|-----------|     |-----------------------|    |-----------------------|     |---------------------|     |--------------------|
-| Parameters|     | Main Orchestrator     |    | Generated SAP Data   |     | Validation Rules   |     | Business KPIs      |
-| Data rules|     | Reads config          |    | Output Files         |     | Quality Checks     |     | Reporting Layer   |
-| Settings  |     | Controls data flow    |    | Storage Layer        |     | Metrics            |     | Dashboards        |
-+-----------+     +-----------------------+    +-----------------------+     +---------------------+     +--------------------+
+|-----------|     |-----------------------|     |-----------------------|     |---------------------|     |--------------------|
+| Parameters|     | Main Orchestrator     |     | Generated SAP Data   |     | Validation Rules   |     | Business KPIs      |
+| Data rules|     | Reads config          |     | Output Files         |     | Quality Checks     |     | Reporting Layer   |
+| Settings  |     | Controls data flow    |     | Storage Layer        |     | Metrics            |     | Dashboards        |
++-----------+     +-----------------------+     +-----------------------+     +---------------------+     +--------------------+
 
 
 ```
