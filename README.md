@@ -25,7 +25,12 @@ Users can adjust parameters such as number of vendors, materials, purchase order
 Simulates end-to-end processes including vendor master, material master, purchase order creation, line items, history, and vendor contracts. 
 
 - Lightweight and easily extensible architecture
-Written with modular code to simplify extension and customization. 
+Written with modular code to simplify extension and customization.
+
+- Memory-Efficient Large Data Generation
+Uses Python generators to stream data records instead of loading entire datasets into memory.
+Enables generation of very large SAP datasets without memory overhead.
+Suitable for high-volume, enterprise-scale data simulation.
 
 ---
 ## 🏗️ SAP Data Generator – Architecture Overview
