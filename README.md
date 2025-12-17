@@ -56,12 +56,12 @@ The system follows a layered, modular architecture designed for:
 
 ---
 ## 🛠️ Technology Stack
-Programming Language
-    Python 
-    Pandas
-    Numpy
-    faker
-    streamlit
+**Programming Language**
+- Python 
+- Pandas
+- Numpy
+- faker
+- streamlit
     
     
 
