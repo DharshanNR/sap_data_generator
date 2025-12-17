@@ -29,6 +29,9 @@ Written with modular code to simplify extension and customization.
 
 ---
 ## 🏗️ SAP Data Generator – Architecture Overview
+
+This framework is a class-based Python architecture designed to generate SAP data, validate its quality, and expose business-readable KPIs via a dashboard layer.
+
 The system follows a layered, modular architecture designed for:
 
 - Scalability (large data volumes)
