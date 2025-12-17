@@ -60,16 +60,17 @@ The system follows a layered, modular architecture designed for:
 ---
 ## 🛠️ Technology Stack
 **Programming Language**
-- Python 
-- Pandas
-- Numpy
-- faker
-- streamlit
+- Python 3.x
+    - Standard Libraries:
+      - os
+      - logging
+      - itertools
+    - Third-Party Libraries:
+      - Pandas
+      - Numpy
+      - faker
+      - streamlit
     
-    
-
-
-Collaboration and documentation
 
 **Configurable:** Parameters (vendor count, material count, PO volume, distributions, process rules) are set via the `Config` class, so you can tailor data generation to your use case.
 
