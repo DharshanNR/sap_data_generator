@@ -40,13 +40,14 @@ The system follows a layered, modular architecture designed for:
 - Analytics readiness (downstream dashboards & reports)
 
 ```
-Config Files
-    ↓
-Master Data Generators with all the parameters in config files
-    ↓
-Data Quality Validation
-    ↓
-Analytics & Dashboard Consumption
++-----------+     +-----------------------+     +-----------+     +-----------------------+     +---------------------+     +--------------------+
+| config.py | --> | SAPDatagenerator.py   | --> | utils.py  | --> | generatedsapdata/     | --> | dataquality.py      | --> | dashboard.py       |
+|-----------|     |-----------------------|     |-----------|     |-----------------------|     |---------------------|     |--------------------|
+| Parameters|     | Main Orchestrator     |     | Helper    |     | Generated SAP Data   |     | Validation Rules   |     | Business KPIs      |
+| Data rules|     | Reads config          |     | Functions |     | Output Files         |     | Quality Checks     |     | Reporting Layer   |
+| Settings  |     | Controls data flow    |     | Reusable  |     | Storage Layer        |     | Metrics            |     | Dashboards        |
++-----------+     +-----------------------+     +-----------+     +-----------------------+     +---------------------+     +--------------------+
+
 
 ```
 
