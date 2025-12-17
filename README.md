@@ -40,13 +40,13 @@ The system follows a layered, modular architecture designed for:
 - Analytics readiness (downstream dashboards & reports)
 
 ```
-+-----------+     +-----------------------+     +-----------+     +-----------------------+     +---------------------+     +--------------------+
-| config.py | --> | SAPDatagenerator.py   | --> | utils.py  | --> | generatedsapdata/     | --> | dataquality.py      | --> | dashboard.py       |
-|-----------|     |-----------------------|     |-----------|     |-----------------------|     |---------------------|     |--------------------|
-| Parameters|     | Main Orchestrator     |     | Helper    |     | Generated SAP Data   |     | Validation Rules   |     | Business KPIs      |
-| Data rules|     | Reads config          |     | Functions |     | Output Files         |     | Quality Checks     |     | Reporting Layer   |
-| Settings  |     | Controls data flow    |     | Reusable  |     | Storage Layer        |     | Metrics            |     | Dashboards        |
-+-----------+     +-----------------------+     +-----------+     +-----------------------+     +---------------------+     +--------------------+
++-----------+     +-----------------------+    +-----------------------+     +---------------------+     +--------------------+
+| config.py | --> | SAPDatagenerator.py   | --> | generatedsapdata/     | --> | dataquality.py      | --> | dashboard.py       |
+|-----------|     |-----------------------|    |-----------------------|     |---------------------|     |--------------------|
+| Parameters|     | Main Orchestrator     |    | Generated SAP Data   |     | Validation Rules   |     | Business KPIs      |
+| Data rules|     | Reads config          |    | Output Files         |     | Quality Checks     |     | Reporting Layer   |
+| Settings  |     | Controls data flow    |    | Storage Layer        |     | Metrics            |     | Dashboards        |
++-----------+     +-----------------------+    +-----------------------+     +---------------------+     +--------------------+
 
 
 ```
